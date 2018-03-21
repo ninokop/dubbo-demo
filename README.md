@@ -7,7 +7,7 @@ This example shows you how Dubbo Microservices and CSE Microservices work parall
 ***Clone or Download the code***
 
 ```sh
-git clone https://github.com/thandayuthapani/dubbo-demo.git
+git clone https://github.com/huawei-microservice-demo/dubbo-demo.git
 ```
 or download the code as ZIP file.
 
