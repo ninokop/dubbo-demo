@@ -26,4 +26,4 @@ SERVER_HOST=$(ifconfig $net_name | grep -E 'inet\W' | grep -o -E [0-9]+.[0-9]+.[
 sed -i s/"serveraddress"/"$SERVER_HOST"/ consumer.yaml
 
 # start consumer
-# docker-compose -f consumer.yaml up
+docker-compose -f consumer.yaml up
