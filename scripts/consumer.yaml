@@ -1,0 +1,18 @@
+version: '3'
+services:
+  meshconsumer:
+    build:
+      context: dubbo-consumer-mesher/
+      dockerfile: Dockerfile
+#    image: meshdubbocons:latest
+    environment:
+      - CSE_REGISTRY_ADDR=http://serveraddress:30100
+  dubboconsumer:
+    build:
+      context: dubbo-consumer/
+      dockerfile: Dockerfile
+#    image: consumer:v1
+    network_mode: "service:meshconsumer"
+    depends_on: 
+      - "meshconsumer"
+
