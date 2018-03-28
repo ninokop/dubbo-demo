@@ -15,7 +15,7 @@ mvn clean install
 mvn dependency:copy-dependencies
 sleep 2
 
-mkdir -p $HOME/dubbo-consumer/lib
+rm -rf $HOME/dubbo-consumer/lib && mkdir -p $HOME/dubbo-consumer/lib
 cp -r target/dubbo-demo-consumer-2.5.6.jar $HOME/dubbo-consumer/lib
 cp -r target/dependency/* $HOME/dubbo-consumer/lib
 
@@ -26,4 +26,4 @@ SERVER_HOST=$(ifconfig $net_name | grep -E 'inet\W' | grep -o -E [0-9]+.[0-9]+.[
 sed -i s/"serveraddress"/"$SERVER_HOST"/ consumer.yaml
 
 # start consumer
-docker-compose -f consumer.yaml up
+docker-compose -f consumer.yaml up --build

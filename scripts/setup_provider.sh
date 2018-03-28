@@ -15,7 +15,7 @@ mvn clean install
 mvn dependency:copy-dependencies
 sleep 2
 
-mkdir -p $HOME/dubbo-provider/lib
+rm -rf $HOME/dubbo-provider/lib && mkdir -p $HOME/dubbo-provider/lib
 cp -r target/dubbo-demo-provider-2.5.6.jar $HOME/dubbo-provider/lib
 cp -r target/dependency/* $HOME/dubbo-provider/lib
 
@@ -26,7 +26,7 @@ SERVER_HOST=$(ifconfig $net_name | grep -E 'inet\W' | grep -o -E [0-9]+.[0-9]+.[
 sed -i s/"serveraddress"/"$SERVER_HOST"/ provider.yaml
 
 # start provider
-docker-compose -f provider.yaml up
+docker-compose -f provider.yaml up --build
 
 
 
