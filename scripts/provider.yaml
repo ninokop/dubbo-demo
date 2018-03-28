@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  meshprovider:
+    build:
+      context: dubbo-provider-mesher/
+      dockerfile: Dockerfile
+    environment: 
+      - CSE_REGISTRY_ADDR=http://10.120.195.2:30100
+
+  provider:
+    build:
+      context: dubbo-provider/
+      dockerfile: Dockerfile
+    network_mode: "service:meshprovider"
+    depends_on: 
+      - "meshprovider"
