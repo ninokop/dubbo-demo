@@ -2,11 +2,18 @@
 cse:
   service:
     registry: 
-      address:  http://192.168.42.73:30100
-     # address: https://cse.cn-north-1.myhwclouds.com:443 # uri of service center
+      # address:  http://192.168.42.73:30100
+      address: https://cse.cn-north-1.myhwclouds.com:443 # uri of service center
       scope: full #set full to be able to discover other app's service
       watch: false # set if you want to watch instance change event
       autoIPIndex: true # set to true if u want to resolve source IP to microservice
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhwclouds.com:443
+      refreshMode: 1
+      refreshInterval: 30
+      tenantName:  default
+      autodiscovery: false
   protocols:
     dubboSimpleRegistry:
       listenAddress: listenaddr:30202

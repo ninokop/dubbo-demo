@@ -5,6 +5,17 @@ cd ..
 DEPLOY_DIR=`pwd`
 CONF_DIR=$DEPLOY_DIR/conf
 
+echo -e "Waiting for registry ...\c"
+COUNT=0
+while [ $COUNT -lt 1 ]; do    
+    echo -e ".\c"
+    sleep 1
+    COUNT=`netstat -an | grep 30202 | wc -l`
+    if [ $COUNT -gt 0 ]; then
+        break
+    fi
+done
+
 SERVER_NAME=`sed '/dubbo.application.name/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`
 SERVER_PROTOCOL=`sed '/dubbo.protocol.name/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`
 #SERVER_HOST=`sed '/dubbo.protocol.host/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`

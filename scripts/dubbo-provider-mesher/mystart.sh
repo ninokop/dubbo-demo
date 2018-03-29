@@ -4,6 +4,7 @@ set -e
 set -x
 
 export CHASSIS_HOME=$(cd `dirname $0`; pwd)
+echo 100.114.154.160 cse.cn-north-1.myhwclouds.com >> /etc/hosts
 
 net_name=$(ip -o -4 route show to default | awk '{print $5}')
 listen_addr=$(ifconfig $net_name | grep -E 'inet\W' | grep -o -E [0-9]+.[0-9]+.[0-9]+.[0-9]+ | head -n 1)

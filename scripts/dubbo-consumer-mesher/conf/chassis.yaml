@@ -2,20 +2,27 @@
 cse:
   service:
     registry:
-      address: http://192.168.42.203:30100 # uri of service center
-     # address: https://cse.cn-north-1.myhwclouds.com:443 # uri of service center
+      # address: http://192.168.42.203:30100 # uri of service center
+      address: https://cse.cn-north-1.myhwclouds.com:443 # uri of service center
       scope: full #set full to be able to discover other app's service
       watch: false # set if you want to watch instance change event
       autoIPIndex: true # set to true if u want to resolve source IP to microservice
+  config:
+    client:
+      serverUri: https://cse.cn-north-1.myhwclouds.com:443
+      refreshMode: 1
+      refreshInterval: 30
+      tenantName:  default
+      autodiscovery: false
   protocols:
     http:
-      listenAddress: 192.168.42.203:40101
+      listenAddress: 127.0.0.1:40101
       ## how to let other service discover this service, it is internalIP:serverPort
       #advertiseAddress: 127.0.0.1:30101
     dubbo:
-      listenAddress: 192.168.42.203:40201
+      listenAddress: 127.0.0.1:40201
     dubboSimpleRegistry:
-      listenAddress: 192.168.42.203:40202
+      listenAddress: 127.0.0.1:40202
 
 #ssl:
 ## Set those config to make mesher as https service

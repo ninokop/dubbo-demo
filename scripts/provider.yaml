@@ -5,8 +5,8 @@ services:
     build:
       context: dubbo-provider-mesher/
       dockerfile: Dockerfile
-    environment: 
-      - CSE_REGISTRY_ADDR=http://serveraddress:30100
+    # environment: 
+      # - CSE_REGISTRY_ADDR=http://serveraddress:30100
 
   provider:
     build:
